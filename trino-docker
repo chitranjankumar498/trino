@@ -1,0 +1,9 @@
+FROM trinodb/trino:429
+ARG current_user=$(whoami)
+USER root
+RUN apt-get update --yes &&\
+	apt-get upgrade --yes && \
+	openssl && \
+	apt-get clean && \
+	rm -rf /var/lib/apt/lists/*
+USER $current_user
